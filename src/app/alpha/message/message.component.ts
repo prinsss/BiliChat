@@ -44,7 +44,15 @@ export class MessageComponent implements OnInit , AfterViewInit {
       // return;
     // }
     // document.documentElement.scrollTop=document.documentElement.scrollHeight;
-    window.scrollTo(0, document.documentElement.scrollHeight);
+
+    let ele = document.documentElement;
+    let scrollDistance = ele.scrollHeight - ele.scrollTop - ele.clientHeight;
+    let msgHeight = (<HTMLElement>document.getElementsByTagName('yt-live-chat-text-message-renderer')[0]).offsetHeight;
+
+    // 向上滚屏五条消息以上，停止自动滚动至底部
+    if (scrollDistance < msgHeight * 5) {
+      window.scrollTo(0, ele.scrollHeight);
+    }
   }
 
   getRepeatGradientColor() {
