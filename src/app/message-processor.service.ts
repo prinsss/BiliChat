@@ -19,6 +19,8 @@ export class MessageProcessorService {
 
   hideGiftDanmaku = true;
 
+  jpDanmakuFilter = false;
+
   // showMember:boolean;
 
   // showModerator:boolean;
@@ -122,6 +124,12 @@ export class MessageProcessorService {
         return content.indexOf(item) !== -1;
       })) {
         return; // 关键字屏蔽
+      }
+      if (this.jpDanmakuFilter) {
+        let regKanaOnly = /[ぁ-んァ-ン]+/;
+        if (! regKanaOnly.test(content)) {
+          return; // 过滤不含日文假名的弹幕
+        }
       }
       this.avatarPreload(rawData.info[2][0]).subscribe(
         avatarUrl => {

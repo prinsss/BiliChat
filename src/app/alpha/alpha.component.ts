@@ -70,6 +70,9 @@ export class AlphaComponent {
     if (this.route.snapshot.queryParamMap.has('silverGiftRatio')) {
       this.proc.silverGiftRatio = Number(this.route.snapshot.queryParamMap.get('silverGiftRatio'));
     }
+    if (this.route.snapshot.queryParamMap.has('jpDanmakuFilter')) {
+      this.proc.jpDanmakuFilter = this.route.snapshot.queryParamMap.get('jpDanmakuFilter').toLowerCase() === 'true';
+    }
   }
 
   onload() {
@@ -112,6 +115,9 @@ export class AlphaComponent {
             }
             this.renderer.groupSimilarWindow = x.config.groupSimilarWindow || this.renderer.groupSimilarWindow;
             this.renderer.maxDammakuNum = x.config.maxDammakuNumber || this.renderer.maxDammakuNum;
+            if (x.config.jpDanmakuFilter !== undefined && !this.route.snapshot.queryParamMap.has('jpDanmakuFilter')) {
+              this.proc.jpDanmakuFilter = x.config.jpDanmakuFilter;
+            }
           }
           this.start(x.room_id);
         },
@@ -129,12 +135,18 @@ export class AlphaComponent {
     this.translate.get('CONNECTING').subscribe((value) => {
       this.renderer.sendSystemInfo(value.replace('{realRoomId}', realRoomId));
     });
+
     this.bili.connect(Number(realRoomId)).subscribe(
       message => {
         if (message.type === 'connected') {
           this.translate.get('CONNECTED').subscribe((value) => {
             this.renderer.sendSystemInfo(value);
           });
+          if (this.proc.jpDanmakuFilter) {
+            this.translate.get('JP_DANMAKU_FILTER').subscribe((value) => {
+              this.renderer.sendSystemInfo(value);
+            });
+          }
           if (environment.official) {
             // this.renderer.sendSystemInfo('你正在使用公共服务器提供的服务，为了更高的稳定性，建议使用本地部署版本。详情访问https://bilichat.3shain.com');
           }

@@ -6,6 +6,7 @@
     "GETROOMINFO": "チャンネル情報取得中...",
     "IDFORMATERROR": "無効なビリビリ生放送チャンネルIDです",
     "ROOMINFORAWID": "チャンネル情報の取得が失敗しました。rawIDで試みます",
+    "JP_DANMAKU_FILTER": "[注意] 仮名含めの日本語コメントだけが表示されてます",
 
     "ROOM": "チャンネル {roomId}",
     "INDEX": "ホームページ",

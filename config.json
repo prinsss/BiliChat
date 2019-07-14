@@ -5,12 +5,9 @@
     "wordFilter": [],
     "showGift": true,
     "hideGiftDanmaku": false,
-    "groupSimilar": true,
+    "groupSimilar": false,
+    "jpDanmakuFilter": false,
     "customEmotions": [
-        {
-            "command": "理解理解",
-            "source": "rikairikai.jpg"
-        }
     ],
     "giftLevel": [
         {

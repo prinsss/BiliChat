@@ -6,6 +6,7 @@
     "GETROOMINFO": "Fetching channel information...",
     "IDFORMATERROR": "ID is not a valid value.",
     "ROOMINFORAWID": "Fetch information failed, retry with rawID",
+    "JP_DANMAKU_FILTER": "[ATTENTION] Only Japanese comment will be displayed",
 
     "ROOM": "Channel {roomId}",
     "INDEX": "Index",

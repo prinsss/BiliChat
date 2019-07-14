@@ -6,6 +6,7 @@
     "GETROOMINFO": "正在获取直播间信息...",
     "IDFORMATERROR": "直播间ID格式错误",
     "ROOMINFORAWID": "直播间信息获取失败,尝试rawID",
+    "JP_DANMAKU_FILTER": "[注意] 当前模式仅显示包含假名的日文弹幕",
 
     "ROOM": "直播间 {roomId}",
     "INDEX": "主页",
